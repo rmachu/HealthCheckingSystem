@@ -3,10 +3,10 @@
 #include "Adafruit_TMP007.h"
 #include "MAX30105.h"
 #include "heartRate.h"
-
+//Define pins
 #define MQ2pin A0
 #define buzzerPin 8
-
+//Declare variables
 MAX30105 particleSensor;
 Adafruit_TMP007 tmp007;
 const byte RATE_SIZE = 4;
