@@ -102,7 +102,7 @@ class HealthMonitorGUI(QMainWindow):
         container = QWidget()
         container.setLayout(layout)
         self.setCentralWidget(container)
-        
+        #Varibales for if each reading is completed
         self.pulse_reading_done = False
         self.temp_reading_done = False
         self.gas_reading_done = False
@@ -116,10 +116,10 @@ class HealthMonitorGUI(QMainWindow):
         if isinstance(pulse_avg, str): #If issues with system, show error 
             self.show_error(pulse_avg, self.measure_temp)
         elif pulse_avg is not None and pulse_avg != 0: 
-            self.label_pulse.setText(f"Average Pulse: {pulse_avg:.2f} BPM")
+            self.label_pulse.setText(f"Average Pulse: {pulse_avg:.2f} BPM") #Display final reading
             self.pulse_reading_done = True
         else:
-           self.show_error("Pulse data could not be collected. Do you want to retry?") 
+           self.show_error("Pulse data could not be collected. Do you want to retry?") #IF error, ask user if retry
         self.parent().sensor_data['pulse'] = pulse_avg 
         
     def measure_temp(self):
@@ -144,7 +144,6 @@ class HealthMonitorGUI(QMainWindow):
         if isinstance(gas_avg, str):
             self.show_error(gas_avg, self.measure_temp)
         if gas_avg is not None and gas_avg != 0:
-            #gas_avg = round(gas_avg, 2)
             self.label_gas.setText(f"Average Gas Level: {gas_avg:.2f}")
             self.gas_reading_done = True
         else:
