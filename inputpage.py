@@ -18,7 +18,7 @@ class InputPage(QWidget):
         self.height_input = QLineEdit(self)
         #Submit
         self.submit_button = QPushButton('Submit', self)
-        self.submit_button.clicked.connect(self.submit_data)
+        self.submit_button.clicked.connect(self.submit_data) #submit button
         
         layout = QVBoxLayout()
         weight_layout = QHBoxLayout()
@@ -37,13 +37,13 @@ class InputPage(QWidget):
         
         self.setLayout(layout)
         self.setWindowTitle('Enter Weight and Height')
-
+    #Submit inputs and save to program
     def submit_data(self):
         weight = self.weight_input.text()
         height = self.height_input.text()
         
         # Validate input data
-        if not weight or not height:
+        if not weight or not height: #If incomplete
             QMessageBox.warning(self, 'Error', 'Please enter both weight and height')
             return      
         try:
@@ -53,7 +53,7 @@ class InputPage(QWidget):
             QMessageBox.warning(self, 'Error', 'Please enter valid numbers for weight and height')
             return
         
-        if weight <= 0 or height <= 0:
+        if weight <= 0 or height <= 0: #If negative values 
             QMessageBox.warning(self, 'Error', 'Please enter valid numbers for weight and height')
             return
 
