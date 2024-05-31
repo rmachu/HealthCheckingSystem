@@ -21,7 +21,7 @@ class MainApplication(QMainWindow):
         self.setCentralWidget(self.input_page)
         self.input_page.setParent(self)
         self.input_page.show()
-    #Health monitor
+    #Input to Health monitor
     def input_complete(self, weight, height):
         self.weight = weight
         self.height = height
@@ -29,7 +29,7 @@ class MainApplication(QMainWindow):
         self.health_monitor_gui = HealthMonitorGUI()
         self.setCentralWidget(self.health_monitor_gui)
         self.health_monitor_gui.show()
-    #Summary page
+    #Health monitor to Summary page
     def display_summary(self):
         self.summary_page = SummaryPage(self.weight, self.height, self.sensor_data)
         self.setCentralWidget(self.summary_page)
@@ -40,7 +40,7 @@ class MainApplication(QMainWindow):
         screen_center = QDesktopWidget().availableGeometry().center()
         frame_geo.moveCenter(screen_center)
         self.move(frame_geo.topLeft()) 
-
+#Entry point
 if __name__ == '__main__':
     app = QApplication(sys.argv)
     main_app = MainApplication()
